@@ -1,0 +1,14 @@
+<p>ProductList Component:</p>
+
+<button (click)="onShowProducts()">Show products</button>
+
+<div>
+  <div>
+    <ul> Products:
+        <app-product
+          *ngFor="let p of products"
+          [product-data-input]="p">
+        </app-product>
+    </ul>
+  </div>
+</div>
