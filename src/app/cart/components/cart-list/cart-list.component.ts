@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { NgIf, NgForOf } from '@angular/common';
 import { Product } from './../../../model/product.model';
-import { CartService } from './../../services/cart.service';
+import { CartService } from './../../../services/cart.service';
+// import { CartItemComponent } from './cart-item/cart-item.component';
 
 @Component({
   selector: 'app-cart-list',
@@ -12,18 +13,25 @@ import { CartService } from './../../services/cart.service';
 })
 export class CartListComponent implements OnInit {
 
-  cartProducts!: Array<Product>;
-  isProductExist!: Boolean;
+  isShowProduct: Boolean = true;
 
-  isShowProduct!: Boolean;
-
-  constructor(private cartService: CartService) {}
+  constructor(public cartService: CartService) {}
 
   ngOnInit(){
-    this.cartProducts = this.cartService.getCartProducts();
-    console.log(this.cartProducts)
-    this.isProductExist = this.cartProducts.length > 0;
-    this.isShowProduct = this.isProductExist;
+    console.log("CartListComponent are created")
+  }
+
+  get cartProducts(): Array<Product> {
+    console.log("getProduct to the cart")
+    return this.cartService.getData();
+  }
+
+  get totalCost(): number {
+    return this.cartService.getTotalCost();
+  }
+
+  get totalQuantity(): number {
+    return this.cartService.getTotalQuantity();
   }
 
   onShowHideProduct(): void {

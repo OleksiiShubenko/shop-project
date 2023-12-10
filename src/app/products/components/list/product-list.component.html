@@ -7,7 +7,8 @@
     <ul> Products:
         <app-product
           *ngFor="let p of products"
-          [product-data-input]="p">
+          [product-data-input]="p"
+          (productToCart)="onAddProductToCart($event)">
         </app-product>
     </ul>
   </div>

@@ -1,7 +1,12 @@
 <p>cart-list works!</p>
-<button (click)="onShowHideProduct()">Show/Hide products</button>
-<div *ngIf="isShowProduct">
+<div>
+  {{cartService.getData()}}
+</div>
   <div *ngFor="let p of cartProducts; trackBy: trackByproducts">
     Product id: {{p.id}}, name: {{p.name}}, description: {{p.description}}, price: {{p.price}}
   </div>
-</div>
+<!--</div>-->
+<p>
+  Total cost: {{totalCost}}
+  Total quantity: {{totalQuantity}}
+</p>

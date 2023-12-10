@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { type Product } from './../../../model/product.model';
 
 @Component({
@@ -12,8 +12,12 @@ export class ProductComponent {
   @Input({ required: true, alias: 'product-data-input' })
   product!: Product;
 
+  @Output()
+  productToCart: EventEmitter<Product> = new EventEmitter<Product>();
+
   onAddToCart(): void {
     console.log("Some product was added to the cart!")
+    this.productToCart.emit(this.product);
   }
 
 }
