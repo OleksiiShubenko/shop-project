@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Product } from './../model/product.model';
+import { CartProduct } from './../model/cart-product.model';
 import { type Subscription } from 'rxjs';
 
 @Injectable({
@@ -27,11 +28,9 @@ export class CartService {
     return this.cartProducts;
   }
 
-
   pushProductToCart(product: Product): void {
     this.channelWithProducts.next(product)
   }
-
 
   getTotalCost(): number {
     if (this.cartProducts.length == 0) return 0;
@@ -42,13 +41,9 @@ export class CartService {
     return this.cartProducts.length;
   }
 
-
-//   getCartProducts(): Array<Product> {
-//       return [
-//         new Product(1, "Drill2", "Outside drill", 30.44),
-//         new Product(2, "Tiles2", "Home Tile", 74.15),
-//         new Product(3, "Mirror2", "Home mirror", 5),
-//       ];
-//     }
+  deleteProduct(productId: number): void {
+    //filter out product by id
+    this.cartProducts = this.cartProducts.filter( e => e.id != productId)
+  }
 
 }

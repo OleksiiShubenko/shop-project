@@ -2,14 +2,14 @@ import { Component, OnInit} from '@angular/core';
 import { NgIf, NgForOf } from '@angular/common';
 import { Product } from './../../../model/product.model';
 import { CartService } from './../../../services/cart.service';
-// import { CartItemComponent } from './cart-item/cart-item.component';
+import { CartItemComponent } from './../cart-item/cart-item.component';
 
 @Component({
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.css'],
   standalone: true,
-  imports: [ NgIf, NgForOf ]
+  imports: [ NgIf, NgForOf, CartItemComponent ]
 })
 export class CartListComponent implements OnInit {
 
@@ -41,6 +41,11 @@ export class CartListComponent implements OnInit {
   trackByproducts(index: number, product: Product): number {
     console.log("Index: " + index)
     return product.id;
+  }
+
+  processProductDelete(productId: number){
+    console.log("Delete product with id: " + productId + " from cart!");
+    this.cartService.deleteProduct(productId);
   }
 
 }

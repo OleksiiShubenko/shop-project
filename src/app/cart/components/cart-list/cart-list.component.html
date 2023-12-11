@@ -1,11 +1,12 @@
-<p>cart-list works!</p>
+<p>Basket:</p>
 <div>
   {{cartService.getData()}}
 </div>
-  <div *ngFor="let p of cartProducts; trackBy: trackByproducts">
-    Product id: {{p.id}}, name: {{p.name}}, description: {{p.description}}, price: {{p.price}}
-  </div>
-<!--</div>-->
+  <app-cart-item
+    *ngFor="let p of cartProducts; trackBy: trackByproducts"
+    [cart-product-data-input]="p"
+    (productToDelete)="processProductDelete($event)">
+  </app-cart-item>
 <p>
   Total cost: {{totalCost}}
   Total quantity: {{totalQuantity}}
