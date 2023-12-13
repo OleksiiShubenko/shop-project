@@ -2,7 +2,7 @@ import { Product } from './product.model';
 
 export class CartProduct {
   constructor(
-    public amount: number,
+    public quantity: number,
     public product: Product
   ) {}
 }

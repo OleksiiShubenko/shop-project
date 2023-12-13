@@ -1,8 +1,14 @@
-<div>
-  Product id: {{product.id}}, name: {{product.name}}, description: {{product.description}}, price: {{product.price}}
+<div highlightTagDirective>
+  Product:
   <div>
-    <button>+</button>
-    <button>-</button>
+    name: {{product.name}}, description: {{product.description}}, price: {{product.price}}
+  </div>
+  <div>
+    Quantity: {{productQuantity}}
+  </div>
+  <div>
+    <button (click)="increaseProductQuantity()">+</button>
+    <button (click)="decreaseProductQuantity()">-</button>
   </div>
   <button (click)="deleteProduct()">Delete item</button>
 </div>

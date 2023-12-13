@@ -15,16 +15,21 @@ export class CartService {
   private channelWithProductObserver = this.channelWithProducts.asObservable()
   private subscription!: Subscription
 
-  cartProducts: Array<Product> = new Array<Product>();
+  cartProducts: Array<CartProduct> = new Array<CartProduct>();
   constructor() {
       this.subscription = this.channelWithProductObserver.subscribe(
-        p => this.cartProducts.push(p)
+        p => {
+          let cartProduct = this.findCartProductById(p.id)
+          if(cartProduct == null) {
+            this.cartProducts.push(new CartProduct(1, p))
+          } else {
+            cartProduct.quantity++;
+          }
+        }
       );
   }
 
-  public getData(): Array<Product> {
-    console.log("Get Data: " + this.cartProducts.length)
-
+  public getData(): Array<CartProduct> {
     return this.cartProducts;
   }
 
@@ -34,7 +39,7 @@ export class CartService {
 
   getTotalCost(): number {
     if (this.cartProducts.length == 0) return 0;
-    return this.cartProducts.map(p => p.price).reduce(function (acc, price){ return acc + price});
+    return this.cartProducts.map(p => p.product).map(p => p.price).reduce(function (acc, price){ return acc + price});
   }
 
   getTotalQuantity(): number {
@@ -43,7 +48,29 @@ export class CartService {
 
   deleteProduct(productId: number): void {
     //filter out product by id
-    this.cartProducts = this.cartProducts.filter( e => e.id != productId)
+    this.cartProducts = this.cartProducts.filter( e => e.product.id != productId)
+    console.log(this.cartProducts)
+  }
+  increaseProductQuantity(productId: number): void {
+    let cartProduct = this.findCartProductById(productId);
+    if(cartProduct != null) {
+      cartProduct.quantity++;
+    }
+  }
+
+  decreaseProductQuantity(productId: number): void {
+    let cartProduct = this.findCartProductById(productId);
+        if(cartProduct != null) {
+          if(cartProduct.quantity > 1){
+            cartProduct.quantity--;
+          } else {
+            this.deleteProduct(productId);
+          }
+        }
+  }
+
+  private findCartProductById(productId: number): CartProduct | undefined {
+    return this.cartProducts.find(e => e.product.id == productId);
   }
 
 }

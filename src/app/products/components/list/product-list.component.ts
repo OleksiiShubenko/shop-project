@@ -30,7 +30,6 @@ export class ProductListComponent implements OnInit {
   }
 
   onAddProductToCart(product: Product){
-    console.log("Add product: " + product + "to the cart")
     this.cartService.pushProductToCart(product)
   }
 }

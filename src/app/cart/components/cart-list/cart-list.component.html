@@ -3,9 +3,13 @@
   {{cartService.getData()}}
 </div>
   <app-cart-item
-    *ngFor="let p of cartProducts; trackBy: trackByproducts"
-    [cart-product-data-input]="p"
-    (productToDelete)="processProductDelete($event)">
+    *ngFor="let p of cartProducts;"
+    [cart-product-data-input]="p.product"
+    [cart-product-quantity-input]="p.quantity"
+    (productToDelete)="processProductDelete($event)"
+    (productToIncrease)="processProductToIncrease($event)"
+    (productToDecrease)="processProductToDecrease($event)"
+  >
   </app-cart-item>
 <p>
   Total cost: {{totalCost}}
