@@ -7,7 +7,7 @@ import { HighlightDirective } from './../../../directive/highlight/highlight.dir
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.css'],
   standalone: true,
-  imports: [HighlightDirective]
+  imports: [ HighlightDirective ]
 })
 export class CartItemComponent {
 

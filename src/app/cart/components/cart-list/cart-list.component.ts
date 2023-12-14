@@ -4,14 +4,13 @@ import { Product } from './../../../model/product.model';
 import { CartProduct } from './../../../model/cart-product.model';
 import { CartService } from './../../../services/cart.service';
 import { CartItemComponent } from './../cart-item/cart-item.component';
-import { HighlightDirective } from './../../../directive/highlight/highlight.directive';
 
 @Component({
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.css'],
   standalone: true,
-  imports: [ NgIf, NgForOf, CartItemComponent, HighlightDirective ]
+  imports: [ NgIf, NgForOf, CartItemComponent ]
 })
 export class CartListComponent implements OnInit {
 
