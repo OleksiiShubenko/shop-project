@@ -23,15 +23,19 @@ export class CartListComponent implements OnInit {
   }
 
   get cartProducts(): Array<CartProduct> {
-    return this.cartService.getData();
+    return this.cartService.getProducts();
   }
 
   get totalCost(): number {
-    return this.cartService.getTotalCost();
+    return this.cartService.totalCost;
   }
 
   get totalQuantity(): number {
-    return this.cartService.getTotalQuantity();
+    return this.cartService.totalQuantity;
+  }
+
+  get isEmptyCart(): boolean {
+    return this.cartService.isEmptyCart
   }
 
   onShowHideProduct(): void {
@@ -45,7 +49,7 @@ export class CartListComponent implements OnInit {
 
   processProductDelete(productId: number){
     console.log("Delete product with id: " + productId + " from cart!");
-    this.cartService.deleteProduct(productId);
+    this.cartService.removeProduct(productId);
   }
 
   processProductToIncrease(productId: number){
@@ -56,6 +60,10 @@ export class CartListComponent implements OnInit {
   processProductToDecrease(productId: number){
     console.log("Decrease product amount with id: " + productId);
     this.cartService.decreaseProductQuantity(productId);
+  }
+
+  removeAllProducts(){
+    this.cartService.removeAllProducts();
   }
 
 }

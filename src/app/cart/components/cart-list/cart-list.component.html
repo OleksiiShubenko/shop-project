@@ -1,6 +1,6 @@
 <p>Basket:</p>
 <div>
-  {{cartService.getData()}}
+<!--  {{cartService.getProducts()}}-->
 </div>
   <app-cart-item
     *ngFor="let p of cartProducts;"
@@ -15,3 +15,6 @@
   Total cost: {{totalCost}}
   Total quantity: {{totalQuantity}}
 </p>
+<div *ngIf="!isEmptyCart">
+  <button (click)="removeAllProducts()">Remove all products</button>
+</div>

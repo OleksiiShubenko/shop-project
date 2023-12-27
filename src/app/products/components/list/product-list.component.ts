@@ -30,6 +30,6 @@ export class ProductListComponent implements OnInit {
   }
 
   onAddProductToCart(product: Product){
-    this.cartService.pushProductToCart(product)
+    this.cartService.addProduct(product)
   }
 }
