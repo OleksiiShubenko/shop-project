@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Self, Optional } from '@angular/core';
 import { NgIf, NgForOf } from '@angular/common';
 import { Product } from './../../../model/product.model';
 import { CartProduct } from './../../../model/cart-product.model';
@@ -16,7 +16,10 @@ export class CartListComponent implements OnInit {
 
   isShowProduct: Boolean = true;
 
-  constructor(public cartService: CartService) {}
+  constructor(
+//   @Optional() @Self()
+    public cartService: CartService
+  ) {}
 
   ngOnInit(){
     console.log("CartListComponent are created")
