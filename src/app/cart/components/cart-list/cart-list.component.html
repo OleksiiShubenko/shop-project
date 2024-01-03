@@ -12,7 +12,7 @@
   >
   </app-cart-item>
 <p>
-  Total cost: {{totalCost}}
+  Total cost: {{totalCost | currency}}
   Total quantity: {{totalQuantity}}
 </p>
 <div *ngIf="!isEmptyCart">

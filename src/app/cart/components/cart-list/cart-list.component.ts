@@ -1,5 +1,5 @@
 import { Component, OnInit, Self, Optional } from '@angular/core';
-import { NgIf, NgForOf } from '@angular/common';
+import {NgIf, NgForOf, CurrencyPipe} from '@angular/common';
 import { Product } from './../../../model/product.model';
 import { CartProduct } from './../../../model/cart-product.model';
 import { CartService } from './../../../services/cart.service';
@@ -10,7 +10,7 @@ import { CartItemComponent } from './../cart-item/cart-item.component';
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.css'],
   standalone: true,
-  imports: [ NgIf, NgForOf, CartItemComponent ]
+  imports: [ NgIf, NgForOf, CartItemComponent, CurrencyPipe ]
 })
 export class CartListComponent implements OnInit {
 

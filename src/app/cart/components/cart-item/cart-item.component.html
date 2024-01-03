@@ -1,8 +1,14 @@
 <div highlightTagDirective>
   Product:
   <div>
-    name: {{product.name}}, description: {{product.description}}, price: {{product.price}}
+    name: {{product.name | titlecase}}, description: {{product.description | lowercase}}, price: {{product.price | currency}}
   </div>
+
+  <div>
+    <pre>{{ product | json }}</pre>
+  </div>
+  <div>{{ testCurrency | currency}}</div>
+
   <div>
     Quantity: {{productQuantity}}
   </div>

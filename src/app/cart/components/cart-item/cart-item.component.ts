@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { JsonPipe, TitleCasePipe, LowerCasePipe, CurrencyPipe } from '@angular/common';
 import { type Product } from './../../../model/product.model';
 import { HighlightDirective } from './../../../directive/highlight/highlight.directive';
 
@@ -7,9 +8,11 @@ import { HighlightDirective } from './../../../directive/highlight/highlight.dir
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.css'],
   standalone: true,
-  imports: [ HighlightDirective ]
+  imports: [ HighlightDirective, JsonPipe, TitleCasePipe, LowerCasePipe, CurrencyPipe ]
 })
 export class CartItemComponent {
+
+  public testCurrency = 0.45
 
   @Input({ required: true, alias: 'cart-product-data-input' })
   product!: Product
