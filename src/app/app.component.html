@@ -29,5 +29,10 @@
     <!--<h5>{{generatedNumber}}</h5>-->
 
     <div class="container">
-      <router-outlet></router-outlet>
+      <div class="col-md-3">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-md-7">
+        <router-outlet name="cartOutletName"></router-outlet>
+      </div>
     </div>

@@ -12,3 +12,7 @@
     </ul>
   </div>
 </div>
+<div>
+  <button *ngIf="!cartShowService.cartIsVisible" (click)="onShowCart()">Show cart</button>
+  <button *ngIf="cartShowService.cartIsVisible" (click)="onCloseCart()">Close cart</button>
+</div>

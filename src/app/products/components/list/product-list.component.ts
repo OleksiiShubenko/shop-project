@@ -1,8 +1,8 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {ProductService} from './../../service/product.service';
-import {CartService} from './../../../services/cart.service';
-import {type Product} from './../../../model/product.model';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ProductService} from '../../service/product.service';
+import {Router} from "@angular/router";
+import {CartShowService} from "../../service/cart-show.service";
+import {type Product} from '../../../model/product.model';
 
 @Component({
   selector: 'app-product-list',
@@ -18,11 +18,12 @@ export class ProductListComponent implements OnInit {
   // products!: Observable<Product[]>;
 
   private router = inject(Router)
+  cartShowService = inject(CartShowService)
 
   constructor(
     private productService: ProductService,
-    private cartService: CartService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.products = new Promise<Product[]>((resolve, reject) => {
@@ -36,5 +37,15 @@ export class ProductListComponent implements OnInit {
 
   onShowProductInfo(product: Product) {
     this.router.navigate(['/product/info', product.id])
+  }
+
+  onShowCart() {
+    this.router.navigate([{outlets: {cartOutletName: 'showCartOutlet'}}])
+    this.cartShowService.showCart()
+  }
+
+  onCloseCart() {
+    this.router.navigate([{outlets: {cartOutletName: null}}])
+    this.cartShowService.closeCart()
   }
 }
