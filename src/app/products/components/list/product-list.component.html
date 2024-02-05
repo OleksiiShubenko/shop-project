@@ -3,11 +3,13 @@
 <div>
   <div>
     <ul> Products:
-        <app-product
-          *ngFor="let p of products | async"
-          [product-data-input]="p"
-          (productToCart)="onAddProductToCart($event)">
-        </app-product>
+      <app-product
+        *ngFor="let p of products | async"
+        [product-data-input]="p"
+        (productToCart)="onAddProductToCart($event)"
+        (productInfo)="onShowProductInfo($event)"
+      >
+      </app-product>
     </ul>
   </div>
 </div>

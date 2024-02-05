@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from "@angular/router";
+import {ExtraOptions, RouterModule, Routes} from "@angular/router";
 import {PathNotFoundComponent} from "./pages/path-not-found/path-not-found.component";
 
 const routes: Routes = [
@@ -10,9 +10,15 @@ const routes: Routes = [
   }
 ];
 
+const extraOptions: ExtraOptions = {
+  // bindToComponentInputs is used to allow binding pathParam - taskId to @Input() taskId in task-form component
+  bindToComponentInputs: true,
+  useHash: false
+};
+
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, extraOptions)
   ],
   exports: [RouterModule]
 })

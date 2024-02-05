@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Product } from './../../model/product.model';
+import {Injectable} from '@angular/core';
+import {Product} from './../../model/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  constructor() {
+  }
 
   getProducts(): Array<Product> {
     return [
@@ -16,5 +17,9 @@ export class ProductService {
       new Product(4, "Window", "-", 52.40, true),
       new Product(5, "Cup", "Small tea cup", 4.50, true),
     ];
+  }
+
+  getProduct(productId: string): Product | undefined {
+    return this.getProducts().find(p => p.id == +productId)
   }
 }

@@ -1,0 +1,6 @@
+<h3>{{product.name | titlecase}}</h3>
+<div>
+  <li>Description: {{product.description | lowercase}}</li>
+  <li>Price: {{product.price | currency }}</li>
+</div>
+<button (click)="onGoBack()">Back</button>

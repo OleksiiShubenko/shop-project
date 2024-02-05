@@ -1,10 +1,11 @@
-<p xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">Product Component</p>
-<div>
-  <ul>Product: {{product.name | titlecase}}
-    <li>Description: {{product.description | lowercase}}</li>
-    <li>Price: {{product.price | currency }}</li>
-  </ul>
+<li>
   <div>
-    <button (click)="onAddToCart()" [disabled]="!product.availability">Buy Product</button>
+    {{product.name | titlecase}}
+    <!--    <li>Description: {{product.description | lowercase}}</li>-->
+    <!--    <li>Price: {{product.price | currency }}</li>-->
+      <a (click)="showProductInfo()">info</a>
+    <div>
+      <!--    <button (click)="onAddToCart()" [disabled]="!product.availability">Buy Product</button>-->
+    </div>
   </div>
-</div>
+</li>

@@ -16,9 +16,16 @@ export class ProductComponent {
 
   @Output()
   productToCart: EventEmitter<Product> = new EventEmitter<Product>();
+  @Output()
+  productInfo: EventEmitter<Product> = new EventEmitter<Product>();
 
-  onAddToCart(): void {
-    this.productToCart.emit(this.product);
+  showProductInfo(): void {
+    console.log("In show product: " + this.product)
+    this.productInfo.emit(this.product);
   }
+
+  // onAddToCart(): void {
+  //   this.productToCart.emit(this.product);
+  // }
 
 }
