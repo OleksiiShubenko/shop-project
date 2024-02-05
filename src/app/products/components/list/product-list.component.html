@@ -6,7 +6,6 @@
       <app-product
         *ngFor="let p of products | async"
         [product-data-input]="p"
-        (productToCart)="onAddProductToCart($event)"
         (productInfo)="onShowProductInfo($event)"
       >
       </app-product>

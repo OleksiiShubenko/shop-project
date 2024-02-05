@@ -3,4 +3,9 @@
   <li>Description: {{product.description | lowercase}}</li>
   <li>Price: {{product.price | currency }}</li>
 </div>
+<div>
+  <button (click)="onAddToCart()" [disabled]="!product.availability">Buy Product</button>
+  <label *ngIf="buyProductClicked > 0">{{buyProductClicked}}</label>
+</div>
+
 <button (click)="onGoBack()">Back</button>

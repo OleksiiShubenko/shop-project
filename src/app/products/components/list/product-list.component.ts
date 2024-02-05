@@ -34,10 +34,6 @@ export class ProductListComponent implements OnInit {
     // })
   }
 
-  onAddProductToCart(product: Product) {
-    this.cartService.addProduct(product)
-  }
-
   onShowProductInfo(product: Product) {
     this.router.navigate(['/product/info', product.id])
   }
