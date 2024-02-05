@@ -16,7 +16,7 @@
         <div>
           <ul class="nav navbar-nav">
             <li routerLinkActive="active">
-              <a href="#about">About</a>
+              <a routerLink="/cart">Cart</a>
             </li>
 
           </ul>
@@ -25,15 +25,9 @@
     </nav>
 
 
-<h3 #appTitle appUnderline></h3>
+    <!--<h3 #appTitle appUnderline></h3>-->
+    <!--<h5>{{generatedNumber}}</h5>-->
 
     <div class="container">
       <router-outlet></router-outlet>
     </div>
-
-
-<!--<h5>{{generatedNumber}}</h5>-->
-
-<!--<app-product-list></app-product-list>-->
-
-<app-cart-list></app-cart-list>

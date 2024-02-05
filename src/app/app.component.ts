@@ -19,7 +19,7 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     console.log("AfterViewInit")
-    this.title.nativeElement.textContent = 'Shop Application';
+    // this.title.nativeElement.textContent = 'Shop Application';
   }
 
   public generatedNumber: number;

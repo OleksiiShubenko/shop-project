@@ -1,28 +1,33 @@
-<p xmlns="http://www.w3.org/1999/html">Basket:</p>
-<div>
-  <p>Search by:</p>
-  <select [(ngModel)]="sortSelectedValue" (change)="onSortProducts($event)">
-    <!--   Key of the sortOptions map will be assigned to sortSelectedValue -->
-    <option *ngFor="let option of selectSortOptions | keyvalue" [ngValue]="option.key">{{option.value}}</option>
-  </select>
-  <label>Asc
-    <input type="checkbox" [(ngModel)]="sortAscOrder">
-  </label>
-
+<div *ngIf="isEmptyCart">
+  Cart is empty!
 </div>
-<app-cart-item
-  *ngFor="let p of cartProducts | orderBy : sortAscOrder : sortByPrice : sortByQuantity : sortByName"
-  [cart-product-data-input]="p.product"
-  [cart-product-quantity-input]="p.quantity"
-  (productToDelete)="processProductDelete($event)"
-  (productToIncrease)="processProductToIncrease($event)"
-  (productToDecrease)="processProductToDecrease($event)"
->
-</app-cart-item>
-<p>
-  Total cost: {{totalCost | currency}}
-  Total quantity: {{totalQuantity}}
-</p>
 <div *ngIf="!isEmptyCart">
-  <button (click)="removeAllProducts()">Remove all products</button>
+  <div>
+    <p>Search by:
+      <select [(ngModel)]="sortSelectedValue" (change)="onSortProducts($event)">
+        <!--   Key of the sortOptions map will be assigned to sortSelectedValue -->
+        <option *ngFor="let option of selectSortOptions | keyvalue" [ngValue]="option.key">{{option.value}}</option>
+      </select>
+      <label>Asc
+        <input type="checkbox" [(ngModel)]="sortAscOrder">
+      </label>
+    </p>
+
+  </div>
+  <app-cart-item
+    *ngFor="let p of cartProducts | orderBy : sortAscOrder : sortByPrice : sortByQuantity : sortByName"
+    [cart-product-data-input]="p.product"
+    [cart-product-quantity-input]="p.quantity"
+    (productToDelete)="processProductDelete($event)"
+    (productToIncrease)="processProductToIncrease($event)"
+    (productToDecrease)="processProductToDecrease($event)"
+  >
+  </app-cart-item>
+  <p>
+    Total cost: {{totalCost | currency}}
+    Total quantity: {{totalQuantity}}
+  </p>
+  <div >
+    <button (click)="removeAllProducts()">Remove all products</button>
+  </div>
 </div>
