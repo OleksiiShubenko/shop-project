@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class CartComponent {
 
+  private router = inject(Router)
+
+  onProcessOrderShow() {
+    this.router.navigate(['/process-order'])
+  }
 }
