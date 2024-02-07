@@ -6,6 +6,7 @@ import {SharedModule} from './shared/shared.module';
 import {AppRoutingModule} from "./app-routing.module";
 import {ProductsModule} from './products/products.module';
 import {CartModule} from "./cart/cart.module";
+import {AdminModule} from "./admin/admin.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import {CartModule} from "./cart/cart.module";
     SharedModule,
     CartModule,
     ProductsModule,
+    AdminModule,
 
     AppRoutingModule,
   ],

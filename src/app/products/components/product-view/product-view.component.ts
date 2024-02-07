@@ -1,5 +1,5 @@
 import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
-import {ProductService} from "../../service/product.service";
+import {ProductService} from "../../../services/product.service";
 import {Product} from "../../../model/product.model";
 import {CurrencyPipe, LowerCasePipe, NgIf, TitleCasePipe} from "@angular/common";
 import {Router} from "@angular/router";

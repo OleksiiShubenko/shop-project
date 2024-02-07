@@ -1,0 +1,13 @@
+<p>Product List:</p>
+
+<div>
+  <div>
+    <ul> Products:
+      <app-admin-product
+        *ngFor="let p of products | async"
+        [product-data-input]="p"
+        (editProduct)="onEditProduct($event)">
+      </app-admin-product>
+    </ul>
+  </div>
+</div>
